@@ -27,14 +27,30 @@ let persons = [
 ]
 
 app.get('/persons', (req, res) => {
-  res.json(persons)
+  return res.json(persons)
 })
 
 app.get('/info', (req, res) => {
-  res.end(`
+  return res.end(`
     <p>Phonebook has info for ${persons.length} people</p>
     <p>${new Date()}</p>
   `)
+})
+
+app.get('/persons/:id', (req, res) => {
+  const id = Number(req.params.id) 
+  const person = persons.find(person => person.id === id)
+  if (person) {
+    res.json(person)
+  } else {
+    res.status(404).end()
+  }
+})
+
+app.delete('/persons/:id', (req, res) => {
+  const id = Number(req.params.id)
+  persons = persons.filter(person => person.id !== id)
+  res.status(204).end()
 })
 
 const PORT = 3001

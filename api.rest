@@ -1,0 +1,8 @@
+### buscar todas las personas
+GET http://localhost:3001/persons
+
+### buscar una persona
+GET http://localhost:3001/persons/4
+
+### borrar una persona
+DELETE http://localhost:3001/persons/4
