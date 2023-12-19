@@ -6,3 +6,12 @@ GET http://localhost:3001/persons/4
 
 ### borrar una persona
 DELETE http://localhost:3001/persons/4
+
+### crear una persona
+POST http://localhost:3001/persons 
+Content-Type: application/json
+
+{
+  "name": "Francisco Figueroa",
+  "number": "341-6148442"
+}

@@ -53,6 +53,13 @@ app.delete('/persons/:id', (req, res) => {
   res.status(204).end()
 })
 
+app.post('/persons', (req, res) => {
+  const person = req.body
+  person.id = Math.floor(Math.random() * 100)
+  persons = persons.concat(person)
+  return res.status(201).json(person)
+})
+
 const PORT = 3001
 app.listen(PORT, () => {
   console.log(`server listening on http://localhost:${PORT}`)
