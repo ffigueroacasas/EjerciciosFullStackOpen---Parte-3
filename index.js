@@ -55,6 +55,13 @@ app.delete('/persons/:id', (req, res) => {
 
 app.post('/persons', (req, res) => {
   const person = req.body
+  if (!person.name){
+    return res.status(400).json({error: "name cannot be missing"})
+  }
+  if (persons.find(i => i.name === person.name)){
+    return res.status(403).json({error: "name must be unique"})
+  }
+
   person.id = Math.floor(Math.random() * 100)
   persons = persons.concat(person)
   return res.status(201).json(person)
